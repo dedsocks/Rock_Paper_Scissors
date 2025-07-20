@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+playRound();
 
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random()*3)
@@ -35,4 +36,25 @@ function getWinner(humanChoice ,computerChoice){
     }
 }
 
-
+function playRound(humanChoice = getHumanChoice().toLowerCase(),
+computerChoice = getComputerChoice()){
+    if(humanChoice === computerChoice){
+        console.log("\nIt is a draw")
+    }
+    else if(humanChoice === getWinner(humanChoice,computerChoice)){
+        humanScore++;
+        console.log(`\nHuman (${humanChoice}) v/s
+                Computer (${computerChoice})\n
+                Human Wins , Computer Loses !!\n
+                Human Score : ${humanScore}\n
+                Computer Score : ${computerScore}`);
+    }
+    else{
+        computerScore++;
+        console.log(`\nHuman (${humanChoice}) v/s
+                Computer (${computerChoice})\n
+                Computer Wins , Human Loses !!\n
+                Human Score : ${humanScore}\n
+                Computer Score : ${computerScore}`);
+    }
+}

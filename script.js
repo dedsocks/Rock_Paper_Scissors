@@ -1,5 +1,5 @@
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random()*3)
@@ -20,5 +20,6 @@ function getHumanChoice(){
     "\n2 . Paper (Beats Rock)"+
     "\n3 . Scissor (Beats Paper)\n");
     
-    return humanChoice.toLowerCase();
+    return humanChoice;
 }
+

@@ -23,3 +23,16 @@ function getHumanChoice(){
     return humanChoice;
 }
 
+function getWinner(humanChoice ,computerChoice){
+    if (humanChoice==="rock"||humanChoice==="paper"&&               computerChoice==="rock"||computerChoice==="paper"){
+        return "paper";
+    }
+    else if(humanChoice==="scissor"||humanChoice==="paper"&&          computerChoice==="scissor"||computerChoice==="paper"){
+        return "scissor";
+    }
+    else{
+        return "rock";
+    }
+}
+
+

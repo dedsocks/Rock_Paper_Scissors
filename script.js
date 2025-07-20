@@ -27,7 +27,6 @@ function getHumanChoice(){
 }
 
 function getWinner(humanChoice ,computerChoice){
-    console.log(computerChoice);
     if (humanChoice === "rock" && computerChoice === "paper"||        humanChoice === "paper" && computerChoice === "rock"){
         return "paper";
     }
@@ -41,9 +40,6 @@ function getWinner(humanChoice ,computerChoice){
 
 function playRound(humanChoice = getHumanChoice().toLowerCase(),
 computerChoice = getComputerChoice()){
-    let winner = getWinner(humanChoice,computerChoice);
-    console.log(humanChoice);
-    console.log(winner);
     if(humanChoice === computerChoice){
         console.log(`\nIt is a draw\n
         Human Score : ${humanScore}\n
@@ -51,7 +47,7 @@ computerChoice = getComputerChoice()){
         gameOverCounter--;
         checkGameOver();
     }
-    else if(humanChoice === winner){
+    else if(humanChoice === getWinner(humanChoice,computerChoice)){
         humanScore++;
         console.log(`\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
         Human Wins , Computer Loses !!\n

@@ -3,6 +3,8 @@ let computerScore = 0;
 let gameOverCounter = 5;
 
 const buttonHolder = document.querySelector("#buttonHolder");
+const resultBox = document.querySelector("#resultBox");
+
 
 buttonHolder.addEventListener("click",event => {
     let target = event.target;
@@ -47,28 +49,35 @@ function getWinner(humanChoice ,computerChoice){
 
 function playRound(humanChoice ,computerChoice){
     if(humanChoice === computerChoice){
-        console.log(`\nIt is a draw\n
+        let para = document.createElement("p");
+        para.textContent = `\nIt is a draw\n
         Human Score : ${humanScore}\n
-        Computer Score : ${computerScore}`);
-        gameOverCounter--;
+        Computer Score : ${computerScore}\n`;
+        resultBox.appendChild(para);
     }
     else if(humanChoice === getWinner(humanChoice,computerChoice)){
         humanScore++;
-        console.log(`\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
+        let para = document.createElement("p");
+        para.textContent = 
+        `\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
         Human Wins , Computer Loses !!\n
         Human Score : ${humanScore}\n
-        Computer Score : ${computerScore}`);
-        gameOverCounter--;
+        Computer Score : ${computerScore}\n`;
+        resultBox.appendChild(para);
     }
     else{
         computerScore++;
-        console.log(`\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
+        let para = document.createElement("p");
+        para.textContent = 
+        `\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
         Computer Wins , Human Loses !!\n
         Human Score : ${humanScore}\n
-        Computer Score : ${computerScore}`);
-        gameOverCounter--;
+        Computer Score : ${computerScore}`;
+        resultBox.appendChild(para);
+        ;
     }
 }
+
 
 
 

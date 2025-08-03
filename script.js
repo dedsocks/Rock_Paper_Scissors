@@ -49,7 +49,7 @@ function getWinner(humanChoice ,computerChoice){
 
 function playRound(humanChoice ,computerChoice){
     if(humanChoice === computerChoice){
-        let para = document.createElement("p");
+        let para = document.createElement("div");
         para.textContent = `\nIt is a draw\n
         Human Score : ${humanScore}\n
         Computer Score : ${computerScore}\n`;
@@ -57,7 +57,7 @@ function playRound(humanChoice ,computerChoice){
     }
     else if(humanChoice === getWinner(humanChoice,computerChoice)){
         humanScore++;
-        let para = document.createElement("p");
+        let para = document.createElement("div");
         para.textContent = 
         `\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
         Human Wins , Computer Loses !!\n
@@ -67,7 +67,7 @@ function playRound(humanChoice ,computerChoice){
     }
     else{
         computerScore++;
-        let para = document.createElement("p");
+        let para = document.createElement("div");
         para.textContent = 
         `\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
         Computer Wins , Human Loses !!\n

@@ -2,7 +2,23 @@ let humanScore = 0;
 let computerScore = 0;
 let gameOverCounter = 5;
 
-checkGameOver();
+const buttonHolder = document.querySelector("#buttonHolder");
+
+buttonHolder.addEventListener("click",event => {
+    let target = event.target;
+
+    switch(target.id){
+        case 'rock':
+            playRound("rock",getComputerChoice())
+            break;
+        case 'paper':
+            playRound("paper",getComputerChoice())
+            break;
+        case 'scissor':
+            playRound("scissor",getComputerChoice())
+            break;
+    }
+});
 
 function getComputerChoice(){
     let randomNumber = Math.floor(Math.random()*3)
@@ -17,15 +33,6 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    let humanChoice = prompt("Enter one of the three choices given below:"+
-    "\n1 . Rock (Beats Scissors)"+
-    "\n2 . Paper (Beats Rock)"+
-    "\n3 . Scissor (Beats Paper)\n");
-    
-    return humanChoice;
-}
-
 function getWinner(humanChoice ,computerChoice){
     if (humanChoice === "rock" && computerChoice === "paper"||        humanChoice === "paper" && computerChoice === "rock"){
         return "paper";
@@ -38,14 +45,12 @@ function getWinner(humanChoice ,computerChoice){
     }
 }
 
-function playRound(humanChoice = getHumanChoice().toLowerCase(),
-computerChoice = getComputerChoice()){
+function playRound(humanChoice ,computerChoice){
     if(humanChoice === computerChoice){
         console.log(`\nIt is a draw\n
         Human Score : ${humanScore}\n
         Computer Score : ${computerScore}`);
         gameOverCounter--;
-        checkGameOver();
     }
     else if(humanChoice === getWinner(humanChoice,computerChoice)){
         humanScore++;
@@ -54,7 +59,6 @@ computerChoice = getComputerChoice()){
         Human Score : ${humanScore}\n
         Computer Score : ${computerScore}`);
         gameOverCounter--;
-        checkGameOver();
     }
     else{
         computerScore++;
@@ -63,30 +67,8 @@ computerChoice = getComputerChoice()){
         Human Score : ${humanScore}\n
         Computer Score : ${computerScore}`);
         gameOverCounter--;
-        checkGameOver();
     }
 }
 
-function checkGameOver(){
-    if (gameOverCounter !== 0){
-        playRound();
-    }
-    else{
-        if(humanScore === computerScore){
-            console.log(`\nIt is a draw\n
-            Human Score : ${humanScore}\n
-            Computer Score : ${computerScore}`);
-        }
-        else if(humanScore > computerScore){
-            console.log(`Human Wins , Computer Loses !!\n
-            Human Score : ${humanScore}\n
-            Computer Score : ${computerScore}`);
-        }
-        else{
-            console.log(`Computer Wins , Human Loses !!\n
-            Human Score : ${humanScore}\n
-            Computer Score : ${computerScore}`);
-        }
-    }
-}
+
 

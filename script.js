@@ -5,6 +5,10 @@ let gameOverCounter = 5;
 const buttonHolder = document.querySelector("#buttonHolder");
 const resultBox = document.querySelector("#resultBox");
 
+const humanScoreDom = document.querySelector("#humanScoreDom");
+const computerScoreDom = document.querySelector("#computerScoreDom");
+humanScoreDom.textContent = `Human : ${humanScore}`;
+computerScoreDom.textContent = `Computer : ${computerScore}`;
 
 buttonHolder.addEventListener("click",event => {
     let target = event.target;

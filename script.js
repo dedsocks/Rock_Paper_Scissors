@@ -1,27 +1,47 @@
-let humanScore = 0;
-let computerScore = 0;
-let gameOverCounter = 5;
+let humanScore ;
+let computerScore ;
 
 const buttonHolder = document.querySelector("#buttonHolder");
 const resultBox = document.querySelector("#resultBox");
 
 const humanScoreDom = document.querySelector("#humanScoreDom");
 const computerScoreDom = document.querySelector("#computerScoreDom");
-humanScoreDom.textContent = `Human : ${humanScore}`;
-computerScoreDom.textContent = `Computer : ${computerScore}`;
+
+const humanEmoji = document.querySelector("#humanEmoji");
+const computerEmoji = document.querySelector("#computerEmoji");
+
+const gameWinner = document.querySelector("#gameWinner");
+const playAgainBtn = document.querySelector("#playAgainBtn");
+const gameOverDiv = document.querySelector("#gameOverDiv");
+const gameOverOverlay = document.querySelector("#gameOverOverlay");
+
+startGame();
+
+function startGame(){
+    humanScore = 0;
+    computerScore = 0;
+
+    gameOverDiv.classList.toggle("active");
+    gameOverOverlay.classList.toggle("active");
+    resultBox.textContent = "FIRST TO SCORE 5 WINS";
+    humanEmoji.textContent = "❓";
+    computerEmoji.textContent = "❓";
+    humanScoreDom.textContent = `Human : ${humanScore}`;
+    computerScoreDom.textContent = `Computer : ${computerScore}`;
+}
 
 buttonHolder.addEventListener("click",event => {
     let target = event.target;
 
     switch(target.id){
         case 'rock':
-            playRound("rock",getComputerChoice())
+            playRound("✊",getComputerChoice())
             break;
         case 'paper':
-            playRound("paper",getComputerChoice())
+            playRound("🖐️",getComputerChoice())
             break;
         case 'scissor':
-            playRound("scissor",getComputerChoice())
+            playRound("✌️",getComputerChoice())
             break;
     }
 });
@@ -31,57 +51,63 @@ function getComputerChoice(){
 
     switch (randomNumber){
         case 0:
-            return "rock";
+            return "✊";
         case 1:
-            return "paper";
+            return "🖐️";
         case 2:
-            return "scissor";
+            return "✌️";
     }
 }
 
 function getWinner(humanChoice ,computerChoice){
-    if (humanChoice === "rock" && computerChoice === "paper"||        humanChoice === "paper" && computerChoice === "rock"){
-        return "paper";
+    if (humanChoice === "✊" && computerChoice === "🖐️"||        humanChoice === "🖐️" && computerChoice === "✊"){
+        return "🖐️";
     }
-    else if(humanChoice === "paper" && computerChoice === "scissor"|| humanChoice === "scissor" && computerChoice === "paper"){
-        return "scissor";
+    else if(humanChoice === "🖐️" && computerChoice === "✌️"|| humanChoice === "✌️" && computerChoice === "🖐️"){
+        return "✌️";
     }
     else{
-        return "rock";
+        return "✊";
     }
 }
 
 function playRound(humanChoice ,computerChoice){
+    humanEmoji.textContent = humanChoice;
+    computerEmoji.textContent = computerChoice;
+
     if(humanChoice === computerChoice){
-        let para = document.createElement("div");
-        para.textContent = `\nIt is a draw\n
-        Human Score : ${humanScore}\n
-        Computer Score : ${computerScore}\n`;
-        resultBox.appendChild(para);
+        resultBox.textContent = "IT'S A DRAW";
     }
     else if(humanChoice === getWinner(humanChoice,computerChoice)){
         humanScore++;
-        let para = document.createElement("div");
-        para.textContent = 
-        `\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
-        Human Wins , Computer Loses !!\n
-        Human Score : ${humanScore}\n
-        Computer Score : ${computerScore}\n`;
-        resultBox.appendChild(para);
+        humanScoreDom.textContent = `Human : ${humanScore}`;
+        resultBox.textContent = "HUMAN WINS";
     }
     else{
         computerScore++;
-        let para = document.createElement("div");
-        para.textContent = 
-        `\nHuman (${humanChoice}) v/s Computer (${computerChoice})\n
-        Computer Wins , Human Loses !!\n
-        Human Score : ${humanScore}\n
-        Computer Score : ${computerScore}`;
-        resultBox.appendChild(para);
-        ;
+        resultBox.textContent = "COMPUTER WINS";
+        computerScoreDom.textContent = `Computer : ${computerScore}`;
+    }
+    checkGameOver();
+}
+
+function checkGameOver(){
+    if( humanScore === 5 ){
+        toggleGameOverPage("Human");
+    }
+    else if( computerScore === 5 ){
+        toggleGameOverPage("Computer");
     }
 }
 
+function toggleGameOverPage(Winner){
+    gameWinner.textContent = `${Winner} Wins!`;
+    gameOverDiv.classList.toggle("active");
+    gameOverOverlay.classList.toggle("active");
+}
 
+playAgainBtn.addEventListener("click",()=>{
+    startGame();
+});
 
 

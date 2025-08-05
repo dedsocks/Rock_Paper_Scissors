@@ -13,16 +13,16 @@
     </header>
 
     <main>
-        <div id="resultBox">HUMAN WINS</div>
+        <div id="resultBox"></div>
 
         <div id="outputHolder">
             <div id="humanOutput">
-                <div id="humanScoreDom">HUMAN : 5</div>
-                <div id="humanEmoji">❓</div>    
+                <div id="humanScoreDom"></div>
+                <div id="humanEmoji"></div>    
             </div>
             <div id="computerOutput">
-                <div id="computerScoreDom">HUMAN : 5</div>
-                <div id="computerEmoji">❓</div>    
+                <div id="computerScoreDom"></div>
+                <div id="computerEmoji"></div>    
             </div>
         </div>
 
@@ -34,10 +34,18 @@
     </main>
     
     <footer>
-        Created with sweat and tears by Shaun
+        Made by Shaun
         <a target="_blank" rel="noreferrer noopener">
             <img src="githubLogo.png" alt="githubLogo">
         </a>
     </footer>
+
+    <div id="gameOverDiv" class="active">
+        <div id="gameWinner">Winner : </div>
+        <button id="playAgainBtn">Play Again</button>
+    </div>
+
+    <div id="gameOverOverlay" class="active">
+    </div>
 </body>
 </html>

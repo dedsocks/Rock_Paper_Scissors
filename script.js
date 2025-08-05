@@ -106,8 +106,6 @@ function toggleGameOverPage(Winner){
     gameOverOverlay.classList.toggle("active");
 }
 
-playAgainBtn.addEventListener("click",()=>{
-    startGame();
-});
+playAgainBtn.addEventListener("click",startGame);
 
 

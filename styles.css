@@ -64,6 +64,12 @@ main{
     padding: 10px;
     border-radius: 50%;
     font-size: xx-large;
+    text-shadow: 0.5px 1px 5px rgb(48, 48, 48);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+#buttonHolder button:hover{
+    transform: translateY(-5px);
 }
 
 #rock{
@@ -81,9 +87,9 @@ main{
 footer{
     display: flex;
     align-items: center;
-    font-size: 10px;
-    font-weight: 100;
-    gap: 5px;
+    font-size: 15px;
+    font-weight: 50;
+    gap: 6px;
 }
 
 footer img{
@@ -91,8 +97,57 @@ footer img{
     width: auto;
 }
 
-.active{
-    opacity: 100;
+#gameOverOverlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
 }
+
+.container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: transparent;
+}
+
+#gameOverDiv{
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    padding: 15px 24px;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+#gameOverDiv button{
+    padding: 5px 10px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+#gameOverDiv button:hover{
+    color: black;
+    background-color: rgb(255, 191, 0);
+}
+
+
+
+
+
+
+
 
 

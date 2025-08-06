@@ -14,6 +14,8 @@ const gameWinner = document.querySelector("#gameWinner");
 const playAgainBtn = document.querySelector("#playAgainBtn");
 const gameOverDiv = document.querySelector("#gameOverDiv");
 const gameOverOverlay = document.querySelector("#gameOverOverlay");
+const container = document.querySelector(".container");
+
 
 startGame();
 
@@ -21,9 +23,9 @@ function startGame(){
     humanScore = 0;
     computerScore = 0;
 
-    gameOverDiv.classList.toggle("active");
-    gameOverOverlay.classList.toggle("active");
-    resultBox.textContent = "FIRST TO SCORE 5 WINS";
+    container.remove();
+    gameOverOverlay.remove();
+    resultBox.textContent = "FIRST TO SCORE 5 POINTS WINS";
     humanEmoji.textContent = "❓";
     computerEmoji.textContent = "❓";
     humanScoreDom.textContent = `Human : ${humanScore}`;
@@ -93,17 +95,17 @@ function playRound(humanChoice ,computerChoice){
 
 function checkGameOver(){
     if( humanScore === 5 ){
-        toggleGameOverPage("Human");
+        showGameOverPage("Human");
     }
     else if( computerScore === 5 ){
-        toggleGameOverPage("Computer");
+        showGameOverPage("Computer");
     }
 }
 
-function toggleGameOverPage(Winner){
+function showGameOverPage(Winner){
     gameWinner.textContent = `${Winner} Wins!`;
-    gameOverDiv.classList.toggle("active");
-    gameOverOverlay.classList.toggle("active");
+    document.body.appendChild(gameOverOverlay);
+    document.body.appendChild(container);
 }
 
 playAgainBtn.addEventListener("click",startGame);

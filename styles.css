@@ -94,6 +94,7 @@ footer{
     font-size: 15px;
     font-weight: 50;
     gap: 6px;
+    padding-bottom: 8px;
 }
 
 footer img{

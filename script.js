@@ -14,7 +14,7 @@ const gameWinner = document.querySelector("#gameWinner");
 const playAgainBtn = document.querySelector("#playAgainBtn");
 const gameOverDiv = document.querySelector("#gameOverDiv");
 const gameOverOverlay = document.querySelector("#gameOverOverlay");
-const container = document.querySelector(".container");
+const container = document.querySelector("#container");
 
 
 startGame();
